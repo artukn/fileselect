@@ -23,16 +23,16 @@ var Quiet *bool
 var expectedItems []item
 
 // Open defines a request for a file path that should exist (unless a - is entered)
-func Open(name, message, defaultPath string) *string {
-	return path(name, message, defaultPath, true)
+func Open(name, defaultPath, message string) *string {
+	return path(name, defaultPath, message, true)
 }
 
 // Create defines a request for a file path that doesn't have to exist
-func Create(name, message, defaultPath string) *string {
-	return path(name, message, defaultPath, false)
+func Create(name, defaultPath, message string) *string {
+	return path(name, defaultPath, message, false)
 }
 
-func path(name, message, defaultPath string, mustExist bool) *string {
+func path(name, defaultPath, message string, mustExist bool) *string {
 	response := defaultPath
 	expectedItems = append(expectedItems, item{
 		name:        name,
